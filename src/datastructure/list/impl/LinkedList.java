@@ -1,5 +1,9 @@
 package datastructure.list.impl;
 
+/**
+ * 带头结点的单链表
+ * @param <E>
+ */
 public class LinkedList<E> {
 
     private Node<E> head;
@@ -38,6 +42,24 @@ public class LinkedList<E> {
         }
     }
 
+    /**
+     * remove position index node
+     * @param index
+     */
+    public void remove(int index) {
+        if (index < 1 || index > this.size) {
+            throw new IllegalArgumentException("The index is illegal");
+        }
+
+        Node<E> cur = this.head.next;
+        for (int i = 0; i < index - 1; i++) {
+            cur = cur.next;
+        }
+        cur.next = cur.next.next;
+
+        this.size--;
+    }
+
     public int size() {
         return this.size;
     }
@@ -48,7 +70,8 @@ public class LinkedList<E> {
         list.addFirst(2);
         list.addFirst(3);
 
-        list.reverse();
+        //list.reverse();
+        list.remove(1);
 
         System.err.println(list.size());
     }
