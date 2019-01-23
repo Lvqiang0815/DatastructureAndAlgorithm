@@ -1,3 +1,5 @@
+package datastructure.list.impl;
+
 public class LinkedList1<E> {
 
     private Node<E> first;
